@@ -38,17 +38,7 @@ const Home = () => {
       <Head>
         <title> Bulk Writer | Henry</title>
       </Head>
-      <div className="header">
-  <img src="https://example.com/logo.png" alt="Logo" />
-  <nav>
-    <ul>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#about">About Us</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</div>
+
       <div className="container">
         <div className="header">
           <div className="header-title">

@@ -9,16 +9,17 @@ const openai = new OpenAIApi(configuration);
 const generateAction = async(req, res) => {
     // Run first prompt
     const introductionPromptPrefix = `
-        Write an introduction for an article on ${req.body.userInput} that includes the following:
+        Write an introduction for an article on the entered title that includes the following:
         - A hook to capture attention
         - A direct answer to the question/topic
         - A preview of what's to come
+        Title is: 
     `;
     const introductionCompletion = await openai.createCompletion({
-        model: 'text-davinci-002',
+        model: 'text-davinci-003',
         prompt: introductionPromptPrefix,
         temperature: 0.7,
-        max_tokens: 200,
+        max_tokens: 500,
         n: 1,
         stop: '\n',
     });
@@ -28,11 +29,11 @@ const generateAction = async(req, res) => {
     const tablePrompt = `
         ${introductionOutput}
 
-        Table:
+        Table on the topic:
         Write a subheading in H2 format that starts with "An overview of" and describes the topic of the table. Write a small sentence after the heading to introduce the table content. Then, create a table with a numbering column and other necessary columns for the topic in context. Use bullet points, subheadings, and short paragraphs to make the table easy to read and digest.
     `;
     const tableCompletion = await openai.createCompletion({
-        model: 'text-davinci-002',
+        model: 'text-davinci-003',
         prompt: tablePrompt,
         temperature: 0.7,
         max_tokens: 500,
@@ -43,7 +44,7 @@ const generateAction = async(req, res) => {
 
     // Run third prompt for body
     const bodyPromptPrefix = `
-        Write an article on ${req.body.userInput} that includes the following:
+        Write an article on the title given that includes the following:
         - H2 and H3 headings with markers
         - Use 8th to 10th grade language
         - Avoid repetitions
@@ -51,7 +52,7 @@ const generateAction = async(req, res) => {
         - FAQs section with 3 to 5 relevant and related questions that have not been answered in the article. No questions which already have answers
     `;
     const bodyCompletion = await openai.createCompletion({
-        model: 'text-davinci-002',
+        model: 'text-davinci-003',
         prompt: bodyPromptPrefix,
         temperature: 0.7,
         max_tokens: 2000,
