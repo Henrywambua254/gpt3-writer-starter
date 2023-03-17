@@ -321,9 +321,14 @@ textarea {
 }
 
 .output-content p {
-    text-align: center;
-    white-space: pre-line;
-    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Manrope', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5em;
+  text-align: left;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  padding: 0;
 }
 
 @media (min-width: 810px) and (max-width: 1199px) {
