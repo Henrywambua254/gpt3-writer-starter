@@ -322,13 +322,11 @@ textarea {
 
 .output-content p {
     font-family: 'Manrope', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 400;
   line-height: 1.5em;
   text-align: left;
   color: rgb(255, 255, 255);
-  margin: 0;
-  padding: 0;
 }
 
 @media (min-width: 810px) and (max-width: 1199px) {
