@@ -5,63 +5,59 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-
+const basePromptPrefix =
+    `
+Write a detailed article outline to cover everything with the topic below
+Before the conclusion have a FAQs section which will have 3 o 5 questions.
+Topic:
+`;
 const generateAction = async(req, res) => {
     // Run first prompt
-    const introductionPromptPrefix = `
-        Write an introduction for an article on the entered title that includes the following:
-        - A hook to capture attention
-        - A direct answer to the question/topic
-        - A preview of what's to come
-        Title is: 
-    `;
-    const introductionCompletion = await openai.createCompletion({
+    console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
+
+    const baseCompletion = await openai.createCompletion({
         model: 'text-davinci-003',
-        prompt: introductionPromptPrefix,
+        prompt: `${basePromptPrefix}${req.body.userInput}`,
         temperature: 0.7,
-        max_tokens: 500,
-        n: 1,
-        stop: '\n',
+        max_tokens: 250,
     });
-    const introductionOutput = introductionCompletion.data.choices[0].text.trim();
 
-    // Run second prompt for table
-    const tablePrompt = `
-        ${introductionOutput}
+    const basePromptOutput = baseCompletion.data.choices.pop();
 
-        Table on the topic:
-        Write a subheading in H2 format that starts with "An overview of" and describes the topic of the table. Write a small sentence after the heading to introduce the table content. Then, create a table with a numbering column and other necessary columns for the topic in context. Use bullet points, subheadings, and short paragraphs to make the table easy to read and digest.
-    `;
-    const tableCompletion = await openai.createCompletion({
+    // I build Prompt #2.
+    const secondPrompt =
+        `
+  Take the table of contents and title of the blog post below and generate a blog post that adheres to the following strictly:
+Additional Tips:
+
+Use a conversational and friendly tone to engage the reader.
+Must use heading markers for all subtitles and titles
+Use subheadings, bullet points, and short paragraphs to make the article easy to read and digest.
+Use simple and concise language that's easy to understand, aimed at an audience with a reading level of 8th to 10th grade.
+Provide helpful tips and insights that the reader can apply in their own financial situation.
+
+  Title: ${req.body.userInput}
+
+  Table of Contents: ${basePromptOutput.text}
+
+  Blog Post:
+  `
+
+    // I call the OpenAI API a second time with Prompt #2
+    const secondPromptCompletion = await openai.createCompletion({
         model: 'text-davinci-003',
-        prompt: tablePrompt,
-        temperature: 0.7,
-        max_tokens: 500,
-        n: 1,
-        stop: '\n',
+        prompt: `${secondPrompt}`,
+        // I set a higher temperature for this one. Up to you!
+        temperature: 0.85,
+        // I also increase max_tokens.
+        max_tokens: 1050,
     });
-    const tableOutput = tableCompletion.data.choices[0].text.trim();
 
-    // Run third prompt for body
-    const bodyPromptPrefix = `
-        Write an article on the title given that includes the following:
-        - H2 and H3 headings with markers
-        - Use 8th to 10th grade language
-        - Avoid repetitions
-        - Be creative and get into the depth of everything, explaining each in a detailed way with no fluff
-        - FAQs section with 3 to 5 relevant and related questions that have not been answered in the article. No questions which already have answers
-    `;
-    const bodyCompletion = await openai.createCompletion({
-        model: 'text-davinci-003',
-        prompt: bodyPromptPrefix,
-        temperature: 0.7,
-        max_tokens: 2000,
-        n: 1,
-        stop: '\n',
-    });
-    const bodyOutput = bodyCompletion.data.choices[0].text.trim();
+    // Get the output
+    const secondPromptOutput = secondPromptCompletion.data.choices.pop();
 
-    res.status(200).json({ output: `${introductionOutput}\n\n${tableOutput}\n\n${bodyOutput}` });
+    // Send over the Prompt #2's output to our UI instead of Prompt #1's.
+    res.status(200).json({ output: secondPromptOutput });
 };
 
 export default generateAction;
