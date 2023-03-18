@@ -1,20 +1,22 @@
-body {
+/* Define a local class for the body selector */
+.contact-page body {
     background-color: #f7f7f7;
   }
   
-  h1 {
+  /* Define styles for the other elements */
+  .contact-page h1 {
     font-size: 2rem;
     text-align: center;
     margin-top: 2rem;
   }
   
-  p {
+  .contact-page p {
     font-size: 1.2rem;
     text-align: center;
     margin-top: 1.5rem;
   }
   
-  a {
+  .contact-page a {
     display: block;
     text-align: center;
     font-size: 1.2rem;
@@ -23,7 +25,8 @@ body {
     text-decoration: none;
   }
   
-  a:hover {
+  .contact-page a:hover {
     color: #0070f3;
   }
+  
   
