@@ -8,7 +8,7 @@ const openai = new OpenAIApi(configuration);
 const basePromptPrefix =
     `
     Write a detailed article outline to cover everything with the topic below
-    Before the conclusion have a FAQs section which will have 3 o 5 questions.
+have a FAQs section which will have 3 o 5 questions, then lastly a conclusion after the FAQs.
     Topic:
 `;
 const generateAction = async(req, res) => {
@@ -70,7 +70,7 @@ const generateAction = async(req, res) => {
         // I set a higher temperature for this one. Up to you!
         temperature: 0.85,
         // I also increase max_tokens.
-        max_tokens: 2550,
+        max_tokens: 2950,
     });
 
     // Get the output
