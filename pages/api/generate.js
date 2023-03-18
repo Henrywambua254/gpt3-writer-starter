@@ -51,7 +51,7 @@ const generateAction = async(req, res) => {
          Also follow these additional tips:
         
         Use a conversational and friendly tone to engage the reader.
-        Must use heading markers for all subtitles and titles
+        Must use heading markers for all subtitles and titles for HZ use ## and so on
         Use subheadings, bullet points, and short paragraphs to make the article easy to read and digest.
         Use simple and concise language that's easy to understand, aimed at an audience with a reading level of 8th to 10th grade.
         Provide helpful tips and insights that the reader can apply
@@ -70,7 +70,7 @@ const generateAction = async(req, res) => {
         // I set a higher temperature for this one. Up to you!
         temperature: 0.85,
         // I also increase max_tokens.
-        max_tokens: 1550,
+        max_tokens: 2550,
     });
 
     // Get the output
