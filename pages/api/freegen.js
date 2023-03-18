@@ -7,19 +7,13 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 const promptPrefix =
     `
-    You are a freestyle writer. You can write anything you want, as long as it follows the instructions given by the user.
-
-    Instructions:
-    
-    - Enter a topic or subject that you want to write about.
-    - Include any specific details or information that you want to be included in the writing.
-    - If you want, you can provide a specific tone or style for the writing.
-    - Provide any additional guidelines or requirements for the writing.
+    You are a helpful professor. You can help the writer achieve anything they request you.
     
     Based on the instructions you receive, write a creative and engaging piece of content that follows the guidelines provided. Make sure to include all relevant information and adhere to any specific requirements or preferences given by the user. 
     
     Remember to keep the tone and style of the writing consistent and appropriate for the topic and intended audience. Good luck!
-Here are the instructions:    
+Here are the instructions and requirement the user has given you:  
+${req.body.userInput}
 `;
 
 const generateAction = async (req, res) => {
