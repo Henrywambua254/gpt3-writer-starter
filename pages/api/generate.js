@@ -19,7 +19,7 @@ const generateAction = async(req, res) => {
         model: 'text-davinci-003',
         prompt: `${basePromptPrefix}${req.body.userInput}`,
         temperature: 0.7,
-        max_tokens: 250,
+        max_tokens: 550,
     });
 
     const basePromptOutput = baseCompletion.data.choices.pop();
@@ -70,7 +70,7 @@ Provide helpful tips and insights that the reader can apply
         // I set a higher temperature for this one. Up to you!
         temperature: 0.85,
         // I also increase max_tokens.
-        max_tokens: 1550,
+        max_tokens: 3550,
     });
 
     // Get the output
