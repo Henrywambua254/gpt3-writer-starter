@@ -68,7 +68,7 @@ Provide helpful tips and insights that the reader can apply
         model: 'text-davinci-003',
         prompt: `${secondPrompt}`,
         // I set a higher temperature for this one. Up to you!
-        temperature: 0.6,
+        temperature: 0.7,
         // I also increase max_tokens.
         max_tokens: 4000,
     });
