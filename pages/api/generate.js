@@ -9,7 +9,7 @@ const basePromptPrefix =
     `
     Write a detailed article outline to cover everything with the topic below
 have a FAQs section which will have 3 o 5 questions, then lastly a conclusion after the FAQs.
-    Topic:
+    Article Title:
 `;
 const generateAction = async(req, res) => {
     // Run first prompt
@@ -29,14 +29,18 @@ const generateAction = async(req, res) => {
         `
         Take the table of contents and title of the blog post below and generate a blog post that adheres to the following strictly:
         Introduction: 
-        Write an introduction paragraph for an article about [article title]. The introduction should have three paragraphs. The first paragraph should capture the reader's attention and make them interested in the topic. The second paragraph should answer the main question of the article directly. The third paragraph should encourage the reader to keep reading by promising to provide valuable information or insights. Use a conversational and engaging tone to keep the reader interested throughout.
+        Write an introduction paragraph for an article about [article title]. 
+        The introduction should have three paragraphs. 
+        The first paragraph should capture the reader's attention and make them interested in the topic. 
+        The second paragraph should answer the main question of the article directly. 
+        The third paragraph should encourage the reader to keep reading by promising to provide valuable information or insights. Use a conversational and engaging tone to keep the reader interested throughout.
         
         Table:
         Please create a table to provide more information about the topic discussed in the introduction. The table should be titled 'An overview of [topic]' and should include a numbering column and additional columns as necessary. Write a small sentence to introduce the table content and explain how the information in the table relates to the topic. For example, if the article is about the benefits of different types of exercise, the table could include columns for exercise type, duration, and benefits. Be sure to format the table properly and make it easy to read and understand.
         
         Body Part:
         
-        Please write a detailed article about [topic], including multiple subheadings in H2 and H3 format to organize the content. The article should be informative and engaging, avoiding fluff and using interesting examples and analogies where appropriate. It may be helpful to include lists or bullet points to break up longer paragraphs and make the information easier to digest.
+        Please write a detailed article about [article title], including multiple subheadings in H2 and H3 format to organize the content. The article should be informative and engaging, avoiding fluff and using interesting examples and analogies where appropriate. It may be helpful to include lists or bullet points to break up longer paragraphs and make the information easier to digest.
         
         For each subheading, provide a clear and concise summary of the topic and provide detailed information to support the main point. Use research and data where possible to back up your claims and make the article more informative. Be sure to use language that is easy to understand for the intended audience and avoid using technical jargon unless necessary.
         
@@ -56,7 +60,7 @@ const generateAction = async(req, res) => {
         Use simple and concise language that's easy to understand, aimed at an audience with a reading level of 8th to 10th grade.
         Provide helpful tips and insights that the reader can apply
 
-  Title: ${req.body.userInput}
+  Article title: ${req.body.userInput}
 
   Table of Contents: ${basePromptOutput.text}
 
