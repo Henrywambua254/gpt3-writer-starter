@@ -46,7 +46,7 @@ const Home = () => {
           </div>
 
           <div className="header-subtitle">
-            <h2>Enter your article titles below</h2>
+            <h2>Enter your article title below</h2>
           </div>
         </div>
 
@@ -90,9 +90,7 @@ const Home = () => {
 
         <div className="badge-container grow">
           <a
-            href="https://lnsafrica.com"
-            target="_blank"
-            rel="noreferrer"
+            href="/freestyle"
           >
             <div className="badge">
 
