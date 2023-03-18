@@ -48,7 +48,7 @@ const generateAction = async(req, res) => {
         Conclusion:
         Finally, please conclude the article with a brief summary of the main points covered and any additional insights or recommendations for readers.
         
-          Additional Tips:
+         Also follow these additional tips:
         
         Use a conversational and friendly tone to engage the reader.
         Must use heading markers for all subtitles and titles
@@ -70,7 +70,7 @@ const generateAction = async(req, res) => {
         // I set a higher temperature for this one. Up to you!
         temperature: 0.85,
         // I also increase max_tokens.
-        max_tokens: 1550,
+        max_tokens: 4000,
     });
 
     // Get the output
