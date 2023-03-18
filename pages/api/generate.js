@@ -9,7 +9,7 @@ const basePromptPrefix =
     `
 Write a detailed article outline to cover everything with the topic below
 Before the conclusion have a FAQs section which will have 3 o 5 questions.
-Topic: ${req.body.userInput}
+Topic: 
 `;
 const generateAction = async(req, res) => {
     // Run first prompt
