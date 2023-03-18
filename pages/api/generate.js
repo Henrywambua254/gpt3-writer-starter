@@ -7,12 +7,9 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 const basePromptPrefix =
     `
-You are a gpt healper. You follow instructions that you have been given and give an outout.
-Now, generate an overview of how your answer will look like based on the instructions given.
-For instance, if the instructions are about creating a table, you could write what the table will have, columns and what it will have.
-If the instructions are for you to write something, you can give an overview of how the answer will be.
-This is an overview or rather outline. So you are not supposed to give the answer, but an outline that will be used to answer or follow the instructions given better.
-Instructions:
+    Write a detailed article outline to cover everything with the topic below
+    Before the conclusion have a FAQs section which will have 3 o 5 questions.
+    Topic:
 `;
 const generateAction = async(req, res) => {
     // Run first prompt
@@ -30,14 +27,40 @@ const generateAction = async(req, res) => {
     // I build Prompt #2.
     const secondPrompt =
         `
-  Now take the overview and follow what it says you should do to give a nice output.
-  You must follow the overview to the latter and do what it says.
+        Take the table of contents and title of the blog post below and generate a blog post that adheres to the following strictly:
+        Introduction: 
+        Write an introduction paragraph for an article about [article title]. The introduction should have three paragraphs. The first paragraph should capture the reader's attention and make them interested in the topic. The second paragraph should answer the main question of the article directly. The third paragraph should encourage the reader to keep reading by promising to provide valuable information or insights. Use a conversational and engaging tone to keep the reader interested throughout.
+        
+        Table:
+        Please create a table to provide more information about the topic discussed in the introduction. The table should be titled 'An overview of [topic]' and should include a numbering column and additional columns as necessary. Write a small sentence to introduce the table content and explain how the information in the table relates to the topic. For example, if the article is about the benefits of different types of exercise, the table could include columns for exercise type, duration, and benefits. Be sure to format the table properly and make it easy to read and understand.
+        
+        Body Part:
+        
+        Please write a detailed article about [topic], including multiple subheadings in H2 and H3 format to organize the content. The article should be informative and engaging, avoiding fluff and using interesting examples and analogies where appropriate. It may be helpful to include lists or bullet points to break up longer paragraphs and make the information easier to digest.
+        
+        For each subheading, provide a clear and concise summary of the topic and provide detailed information to support the main point. Use research and data where possible to back up your claims and make the article more informative. Be sure to use language that is easy to understand for the intended audience and avoid using technical jargon unless necessary.
+        
+        To ensure the article flows smoothly, consider using transitional phrases or sentences to connect each subheading and create a cohesive narrative. This will help readers follow the main points of the article and stay engaged throughout.
+        
+        FAQs:
+        Have a FAQs section before the conclusion with 3 to 5 questions. Each should be answered in depth.
+        
+        Conclusion:
+        Finally, please conclude the article with a brief summary of the main points covered and any additional insights or recommendations for readers.
+        
+          Additional Tips:
+        
+        Use a conversational and friendly tone to engage the reader.
+        Must use heading markers for all subtitles and titles
+        Use subheadings, bullet points, and short paragraphs to make the article easy to read and digest.
+        Use simple and concise language that's easy to understand, aimed at an audience with a reading level of 8th to 10th grade.
+        Provide helpful tips and insights that the reader can apply
 
   Title: ${req.body.userInput}
 
-  Overview: ${basePromptOutput.text}
+  Table of Contents: ${basePromptOutput.text}
 
-  Output:
+  Blog Post:
   `
 
     // I call the OpenAI API a second time with Prompt #2
