@@ -28,6 +28,12 @@ const generateAction = async(req, res) => {
     const secondPrompt =
         `
         Take the table of contents and title of the blog post below and generate a blog post that adheres to the following strictly:
+        Follow these additional tips throughout:
+        You must have markers for headings, lists tables and so on. Hzs for instance have ##
+        Use a conversational and friendly tone to engage the reader.
+        Use subheadings, bullet points, and short paragraphs to make the article easy to read and digest.
+        Use simple and concise language that's easy to understand, aimed at an audience with a reading level of 8th to 10th grade.
+        Provide helpful tips and insights that the reader can apply
         Introduction: 
         Write an introduction paragraph for an article about [article title]. 
         The introduction should have three paragraphs. 
@@ -51,14 +57,6 @@ const generateAction = async(req, res) => {
         
         Conclusion:
         Finally, please conclude the article with a brief summary of the main points covered and any additional insights or recommendations for readers.
-        
-         Also follow these additional tips:
-        
-        Use a conversational and friendly tone to engage the reader.
-        Must use heading markers for all subtitles and titles for HZ use ## and so on
-        Use subheadings, bullet points, and short paragraphs to make the article easy to read and digest.
-        Use simple and concise language that's easy to understand, aimed at an audience with a reading level of 8th to 10th grade.
-        Provide helpful tips and insights that the reader can apply
 
   Article title: ${req.body.userInput}
 
