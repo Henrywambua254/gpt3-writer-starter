@@ -2,9 +2,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import buildspaceLogo from '../assets/buildspace-logo.png';
 import { useState } from 'react';
-import LogoMenu from '../components/LogoMenu';
 
-const Freestyle = () => {
+const Home = () => {
   const [userInput, setUserInput] = useState('');
   const [apiOutput, setApiOutput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -37,19 +36,17 @@ const Freestyle = () => {
   return (
     <div className="root">
       <Head>
-        <title>Bulk Writer | Henry</title>
+        <title> Bulk Writer | Henry</title>
       </Head>
 
       <div className="container">
-        <LogoMenu />
-
         <div className="header">
           <div className="header-title">
             <h1>Freestyle Writer</h1>
           </div>
 
           <div className="header-subtitle">
-            <h2>Enter your prompts below</h2>
+            <h2>Enter your promts below</h2>
           </div>
         </div>
 
@@ -92,8 +89,13 @@ const Freestyle = () => {
         </div>
 
         <div className="badge-container grow">
-          <a href="https://lnsafrica.com" target="_blank" rel="noreferrer">
+          <a
+            href="https://lnsafrica.com"
+            target="_blank"
+            rel="noreferrer"
+          >
             <div className="badge">
+
               <p>Built by Henry Wambua</p>
             </div>
           </a>
@@ -103,4 +105,4 @@ const Freestyle = () => {
   );
 };
 
-export default Freestyle;
+export default Home;

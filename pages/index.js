@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import buildspaceLogo from '../assets/buildspace-logo.png';
 import { useState } from 'react';
-import LogoMenu from '../components/LogoMenu';
 
 const Home = () => {
   const [userInput, setUserInput] = useState('');
@@ -39,8 +38,6 @@ const Home = () => {
       <Head>
         <title> Bulk Writer | Henry</title>
       </Head>
-
-      <LogoMenu />
 
       <div className="container">
         <div className="header">
