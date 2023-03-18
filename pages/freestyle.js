@@ -90,9 +90,7 @@ const Home = () => {
 
         <div className="badge-container grow">
           <a
-            href="https://lnsafrica.com"
-            target="_blank"
-            rel="noreferrer"
+            href="/"
           >
             <div className="badge">
 
