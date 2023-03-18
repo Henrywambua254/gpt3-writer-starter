@@ -42,7 +42,7 @@ const Home = () => {
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1>Freestyke Writer</h1>
+            <h1>Freestyle Writer</h1>
           </div>
 
           <div className="header-subtitle">

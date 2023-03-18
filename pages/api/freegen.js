@@ -5,57 +5,34 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-const basePromptPrefix =
+const promptPrefix =
     `
-You are an helpful gpt. You can do anything the writer prompts you with. You are helpful and you follow instructions given to the later. Write an outline which will help you follow the instructions given below.
-Instructions:
-`;
-const generateAction = async(req, res) => {
-    // Run first prompt
-    console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
+    You are a freestyle writer. You can write anything you want, as long as it follows the instructions given by the user.
 
-    const baseCompletion = await openai.createCompletion({
+    Instructions:
+    
+    - Enter a topic or subject that you want to write about.
+    - Include any specific details or information that you want to be included in the writing.
+    - If you want, you can provide a specific tone or style for the writing.
+    - Provide any additional guidelines or requirements for the writing.
+    
+    Based on the instructions you receive, write a creative and engaging piece of content that follows the guidelines provided. Make sure to include all relevant information and adhere to any specific requirements or preferences given by the user. 
+    
+    Remember to keep the tone and style of the writing consistent and appropriate for the topic and intended audience. Good luck!
+Here are the instructions:    
+`;
+
+const generateAction = async (req, res) => {
+    const completion = await openai.createCompletion({
         model: 'text-davinci-003',
-        prompt: `${basePromptPrefix}${req.body.userInput}`,
+        prompt: promptPrefix,
         temperature: 0.7,
         max_tokens: 550,
     });
 
-    const basePromptOutput = baseCompletion.data.choices.pop();
+    const output = completion.data.choices.pop();
 
-    // I build Prompt #2.
-    const secondPrompt =
-        `
- Take the outline made and the instructions. Make a final output that is of a high quality, easy to follow and follows all the instructions given to the latter.
-  Additional Tips:
-
-Use a conversational and friendly tone to engage the reader.
-Use subheadings, bullet points, and short paragraphs to make it easy to read and digest.
-Use simple and concise language that's easy to understand, aimed at an audience with a reading level of 8th to 10th grade.
-Provide helpful tips and insights that the reader can apply
-
-  Instructions: ${req.body.userInput}
-
-  Outline: ${basePromptOutput.text}
-
-  Final Output:
-  `
-
-    // I call the OpenAI API a second time with Prompt #2
-    const secondPromptCompletion = await openai.createCompletion({
-        model: 'text-davinci-003',
-        prompt: `${secondPrompt}`,
-        // I set a higher temperature for this one. Up to you!
-        temperature: 0.85,
-        // I also increase max_tokens.
-        max_tokens: 3550,
-    });
-
-    // Get the output
-    const secondPromptOutput = secondPromptCompletion.data.choices.pop();
-
-    // Send over the Prompt #2's output to our UI instead of Prompt #1's.
-    res.status(200).json({ output: secondPromptOutput });
+    res.status(200).json({ output: output });
 };
 
 export default generateAction;
