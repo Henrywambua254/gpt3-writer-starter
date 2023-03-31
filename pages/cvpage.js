@@ -8,6 +8,7 @@ const Home = () => {
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [fullName, setfullName] = useState('');
   const [linkedin, setLinkedin] = useState('');
   const [degree, setDegree] = useState('');
   const [institution, setInstitution] = useState('');
