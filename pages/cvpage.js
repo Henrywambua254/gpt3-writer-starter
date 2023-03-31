@@ -11,6 +11,7 @@ const Home = () => {
   const [fullName, setfullName] = useState('');
   const [linkedin, setLinkedin] = useState('');
   const [degree, setDegree] = useState('');
+  const [education, seteducation] = useState('');
   const [workExperience, setworkExperience] = useState('');
   const [institution, setInstitution] = useState('');
   const [major, setMajor] = useState('');
