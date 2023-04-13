@@ -12,7 +12,7 @@ const Home = () => {
     setIsGenerating(true);
 
     console.log('Calling OpenAI...');
-    const response = await fetch('/api/freegen', {
+    const response = await fetch('/api/cvgen', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,15 +42,15 @@ const Home = () => {
       <div className="container">
         <div className="header">
           <div className="header-title">
-            <h1> Blessed's Cover Letter Writer</h1>
+            <h1> Cover Letter Writer</h1>
           </div>
 
           <div className="header-subtitle">
-            <h2>Enter the postition and company.
+            <h2>Enter the postition and company below.
             </h2>
-            <p>Here is an example:</p>
-            <p>Position: Strategist </p>
-             <p>Company: University of Nairobi
+            <h3>Here is an example:</h3>
+            <p>Position: CEO </p>
+             <p>Company: Blessed Foundation
             </p>
           </div>
         </div>
@@ -72,7 +72,7 @@ const Home = () => {
                 {isGenerating ? (
                   <span className="loader"></span>
                 ) : (
-                  <p>magic</p>
+                  <p>Magic</p>
                 )}
               </div>
             </a>
