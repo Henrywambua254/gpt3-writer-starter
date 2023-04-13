@@ -12,7 +12,7 @@ const Home = () => {
     setIsGenerating(true);
 
     console.log('Calling OpenAI...');
-    const response = await fetch('/api/cv', {
+    const response = await fetch('/api/cvgen', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const Home = () => {
                 {isGenerating ? (
                   <span className="loader"></span>
                 ) : (
-                  <p>Do the magic</p>
+                  <p>magic</p>
                 )}
               </div>
             </a>
