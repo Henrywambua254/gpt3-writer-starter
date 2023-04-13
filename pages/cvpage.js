@@ -12,7 +12,7 @@ const Home = () => {
     setIsGenerating(true);
 
     console.log('Calling OpenAI...');
-    const response = await fetch('/api/cvgen', {
+    const response = await fetch('/api/freegen', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
