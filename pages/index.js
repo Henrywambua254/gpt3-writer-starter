@@ -94,7 +94,7 @@ const Home = () => {
           >
             <div className="badge">
 
-              <p>Built by Henry Wambua</p>
+              <p>Freestyle</p>
             </div>
           </a>
         </div>

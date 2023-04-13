@@ -99,7 +99,7 @@ const Home = () => {
           >
             <div className="badge">
 
-              <p>Main </p>
+              <p>Freestyle</p>
             </div>
           </a>
         </div>

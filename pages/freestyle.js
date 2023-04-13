@@ -90,11 +90,11 @@ const Home = () => {
 
         <div className="badge-container grow">
           <a
-            href="/"
+            href="/cover letter"
           >
             <div className="badge">
 
-              <p>Built by Henry Wambua</p>
+              <p>Cover letter</p>
             </div>
           </a>
         </div>
