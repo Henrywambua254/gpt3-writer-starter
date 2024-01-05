@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import buildspaceLogo from '../assets/buildspace-logo.png';
-import testimonial1 from '../assets/testimonial1.jpg';
-import testimonial2 from '../assets/testimonial2.jpg';
 // ... other imports as needed
 
 const Home = () => {
