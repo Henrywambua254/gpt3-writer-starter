@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import buildspaceLogo from '../assets/buildspace-logo.png';
+import testimonial1 from '../assets/testimonial1.jpg';
+import testimonial2 from '../assets/testimonial2.jpg';
 // ... other imports as needed
 
 const Home = () => {
@@ -36,6 +38,12 @@ const Home = () => {
                 Courses tailored to your unique strengths, interests, and goals.
               </p>
             </div>
+            <div className="feature-item">
+              <h3 className="feature-item-title">Real-Time Updates</h3>
+              <p className="feature-item-description">
+                Stay in the loop with dynamic course suggestions based on the latest trends and industry demands.
+              </p>
+            </div>
             {/* ... other feature items ... */}
           </div>
         </section>
@@ -50,8 +58,25 @@ const Home = () => {
                 <span className="testimonial-author">— Jessica S.</span>
               </p>
             </div>
+            <div className="testimonial-item">
+              <Image src={testimonial2} alt="Testimonial 2" className="testimonial-image" />
+              <p className="testimonial-quote">
+                "Absolutely fantastic! The recommendations aligned perfectly with my career goals."
+                <span className="testimonial-author">— Michael R.</span>
+              </p>
+            </div>
             {/* ... other testimonial items ... */}
           </div>
+        </section>
+
+        <section className="benefits-section">
+          <h2 className="benefits-title">Why Choose Our Recommender?</h2>
+          <ul className="benefits-list">
+            <li>Unlock Hidden Opportunities</li>
+            <li>Personalized Career Path Insights</li>
+            <li>Industry-Relevant Course Suggestions</li>
+            {/* ... additional benefits ... */}
+          </ul>
         </section>
 
         <section className="cta-section">
