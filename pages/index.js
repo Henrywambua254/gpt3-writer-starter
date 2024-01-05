@@ -16,7 +16,7 @@ const Home = () => {
       </Head>
 
       <header className="hero-section">
-        <div className="hero-container">
+        <div className="hero-container container">
           <div className="hero-content">
             <h1 className="hero-title">Find Courses That Empower You to Thrive</h1>
             <p className="hero-subtitle">
@@ -28,7 +28,7 @@ const Home = () => {
         </div>
       </header>
 
-      <main className="main-content">
+      <main className="main-content container">
         <section className="features-section">
           <h2 className="features-title">Discover Courses That Fit You Like a Glove</h2>
           <div className="features-grid">
@@ -36,12 +36,6 @@ const Home = () => {
               <h3 className="feature-item-title">Personalized Recommendations</h3>
               <p className="feature-item-description">
                 Courses tailored to your unique strengths, interests, and goals.
-              </p>
-            </div>
-            <div className="feature-item">
-              <h3 className="feature-item-title">Real-Time Updates</h3>
-              <p className="feature-item-description">
-                Stay in the loop with dynamic course suggestions based on the latest trends and industry demands.
               </p>
             </div>
             {/* ... other feature items ... */}
@@ -52,17 +46,10 @@ const Home = () => {
           <h2 className="testimonials-title">See What Others Are Saying</h2>
           <div className="testimonials-slider">
             <div className="testimonial-item">
-              <Image src={testimonial1} alt="Testimonial 1" className="testimonial-image" />
+              <Image src={testimonial1} alt="Testimonial 1" width={150} height={150} className="testimonial-image" />
               <p className="testimonial-quote">
                 "This recommender helped me find courses I never would have discovered on my own. It's a game-changer!"
                 <span className="testimonial-author">— Jessica S.</span>
-              </p>
-            </div>
-            <div className="testimonial-item">
-              <Image src={testimonial2} alt="Testimonial 2" className="testimonial-image" />
-              <p className="testimonial-quote">
-                "Absolutely fantastic! The recommendations aligned perfectly with my career goals."
-                <span className="testimonial-author">— Michael R.</span>
               </p>
             </div>
             {/* ... other testimonial items ... */}
